@@ -1,0 +1,324 @@
+:root {
+  /* Color system */
+  --color-background: #f7f6f3;
+  --color-text: #111111;
+  --color-accent: #8b0000;
+  --color-success: #4f6b4f; /* muted green */
+  --color-warning: #b27a2f; /* muted amber */
+
+  /* Typography */
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  --text-body-size: 16px;
+  --text-body-line-height: 1.7;
+  --text-max-width: 720px;
+
+  /* Spacing scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+
+  /* Radius */
+  --radius-soft: 8px;
+
+  /* Transitions */
+  --transition-fast: 180ms ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line-height);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #f3f1ec;
+}
+
+.top-bar__app-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  letter-spacing: 0.03em;
+}
+
+.top-bar__progress {
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 4px var(--space-1);
+  border-radius: var(--radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 12px;
+}
+
+.status-badge--not-started {
+  background-color: transparent;
+}
+
+.status-badge--in-progress {
+  border-color: rgba(178, 122, 47, 0.4);
+  color: var(--color-warning);
+}
+
+.status-badge--shipped {
+  border-color: rgba(79, 107, 79, 0.5);
+  color: var(--color-success);
+}
+
+.context-header {
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.context-header__title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-1);
+  max-width: var(--text-max-width);
+}
+
+.context-header__subtitle {
+  margin: 0;
+  max-width: var(--text-max-width);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  padding: var(--space-3) var(--space-4);
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.layout-main__primary {
+  flex: 7;
+  max-width: 70%;
+}
+
+.layout-main__secondary {
+  flex: 3;
+  max-width: 30%;
+}
+
+.card {
+  border-radius: var(--radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #f9f8f5;
+  padding: var(--space-3);
+}
+
+.card + .card {
+  margin-top: var(--space-2);
+}
+
+.card__title {
+  font-size: 18px;
+  margin: 0 0 var(--space-1);
+}
+
+.card__body {
+  margin: 0;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--space-2);
+}
+
+.form-label {
+  font-size: 14px;
+}
+
+.input-text,
+.input-textarea {
+  width: 100%;
+  border-radius: var(--radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 10px 12px;
+  font: inherit;
+  background-color: #fdfcf9;
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.input-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input-text:focus,
+.input-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px rgba(139, 0, 0, 0.15);
+  background-color: #fdfaf7;
+}
+
+.button-row {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.button {
+  border-radius: var(--radius-soft);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    color var(--transition-fast), border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.button-primary {
+  background-color: var(--color-accent);
+  color: #f7f6f3;
+}
+
+.button-primary:hover:not(:disabled) {
+  background-color: #6e0000;
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: rgba(139, 0, 0, 0.4);
+}
+
+.button-secondary:hover:not(:disabled) {
+  background-color: #f3f1ec;
+}
+
+.copy-box {
+  border-radius: var(--radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: #fbfaf7;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.copy-box__content {
+  font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+.proof-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: var(--space-2) var(--space-4);
+  background-color: #f3f1ec;
+}
+
+.proof-footer__list {
+  display: flex;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.proof-footer__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+}
+
+.empty-state,
+.error-state {
+  border-radius: var(--radius-soft);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: var(--space-2);
+  background-color: #fbfaf7;
+}
+
+.empty-state__title,
+.error-state__title {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.empty-state__body,
+.error-state__body {
+  margin: 0;
+  font-size: 14px;
+}
+
+.error-state {
+  border-color: rgba(139, 0, 0, 0.4);
+}
+
+.stack-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (max-width: 960px) {
+  .layout-main {
+    flex-direction: column;
+  }
+
+  .layout-main__primary,
+  .layout-main__secondary {
+    max-width: 100%;
+  }
+}
+
